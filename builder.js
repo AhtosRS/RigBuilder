@@ -62,19 +62,56 @@ const mother6 = new motherboards("Asus X570-plus", "AM4", 999, 4, 4, 19000, 3, "
 
 const mothers = [mother1, mother2, mother3, mother4, mother5, mother6];
 
+// rams
+
+class ram {
+    constructor(nombre, gb, precio, stock, id) {
+        this.nombre = nombre;
+        this.gb = parseInt(gb);
+        this.precio = parseInt(precio);
+        this.stock = parseInt(stock);
+        this.id = id;
+    }
+}
+
+const ram1 = new ram("Memoria Adata DDR4 4gb 2400mhz", 4, 2160, 10, "r1");
+const ram2 = new ram("Memoria Crucial DDR4 4gb 2666mhz", 4, 2640, 15, "r2");
+const ram3 = new ram("Memoria Team DDR4 8gb 2666mhz", 4, 4450, 7, "r3");
+
+const rams = [ram1, ram2, ram3];
+
+// discos
+
+class almacenamiento{
+    constructor(nombre, precio, stock, id) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.id = id;
+    }
+}
+
+const alm1 = new almacenamiento("Disco Solido SSD Team 128gb 530mb/s", 2630, 7, "a1");
+const alm2 = new almacenamiento("Disco Solido SSD Adata 120gb 520mb/s", 2783, 5, "a2");
+const alm3 = new almacenamiento("Disco Solido SSD M.2 Adata 120gb 550mb/s", 2810, 3, "a3");
+
+const alm = [alm1, alm2, alm3];
 
 //ejecutable ---------------------------------------------
 
-// stock:
+// stock cpus:
+
+
 let contenedorCPU = "";
 let seleccionado = "";
 let mothersSeleccionadas = [];
+
 for (const cpu of CPUs) {
 
     contenedorCPU = document.createElement("div");
 
     contenedorCPU.setAttribute("id", cpu.id);
-    contenedorCPU.setAttribute("onclick", "hacerAlgo(this.id)");
+    contenedorCPU.setAttribute("onclick", "mostrarMothers(this.id)");
     
 
     contenedorCPU.innerHTML = `<h5>${cpu.nombre}</h5>
@@ -86,8 +123,10 @@ for (const cpu of CPUs) {
     
 }
 
-function hacerAlgo(x){
-    console.log(x);
+
+// eliminar cpus y mostrar mothers compatibles 
+
+function mostrarMothers(x){
 
     for (let i=0; i < CPUs.length; i++) {
         if (CPUs[i].id === x) {
@@ -95,8 +134,10 @@ function hacerAlgo(x){
         }
     }
 
-    const borrando = document.getElementsByClassName("procesadoresEnStock");
-    while (borrando.length > 0) borrando [0].remove();
+    carrito.push(CPUs[seleccionado]);
+
+    const borrandoCPU = document.getElementsByClassName("procesadoresEnStock");
+    while (borrandoCPU.length > 0) borrandoCPU[0].remove();
 
     for (let i = 0; i < mothers.length; i++) {
         if ((mothers[i].chipset === CPUs[seleccionado].chipset || mothers[i].chipset === 999) && mothers[i].socket === CPUs[seleccionado].socket) {
@@ -109,7 +150,7 @@ function hacerAlgo(x){
         contenedorMothers = document.createElement("div");
     
         contenedorMothers.setAttribute("id", placasMadre.id);
-        // contenedorMothers.setAttribute("onclick", alert("mostrar rams compatibles"));
+        contenedorMothers.setAttribute("onclick", "mostrarRams(this.id)");
         
     
         contenedorMothers.innerHTML = `<h5>${placasMadre.nombre}</h5>
@@ -117,7 +158,87 @@ function hacerAlgo(x){
                                 <b> Stock: ${placasMadre.stock}</b>`;
     
         document.body.appendChild(contenedorMothers);
-        contenedorMothers.classList.add("procesadoresEnStock");
+        contenedorMothers.classList.add("mothersEnStock");
         
     }
 }
+
+
+//eliminar mothers y mostrar rams 
+
+let motherselecionada = "";
+
+
+function mostrarRams(x) {
+
+
+    for (let i=0; i < mothers.length; i++) {
+        if (mothers[i].id === x) {
+            motherselecionada = i;
+        }
+    }
+
+    carrito.push(mothers[motherselecionada]);
+
+    const borrandoMother = document.getElementsByClassName("mothersEnStock");
+    while (borrandoMother.length > 0) borrandoMother[0].remove();
+
+    let contenedorRams = "";
+
+    for (const memorias of rams) {
+
+        contenedorRams = document.createElement("div");
+    
+        contenedorRams.setAttribute("id", memorias.id);
+        contenedorRams.setAttribute("onclick", "mostrardiscos(this.id)");
+
+    
+        contenedorRams.innerHTML = `<h5>${memorias.nombre}</h5>
+                                <p> Precio: $${memorias.precio}</p>
+                                <b> Stock: ${memorias.stock}</b>`;
+    
+        document.body.appendChild(contenedorRams);
+        contenedorRams.classList.add("ramsEnStock");
+        
+    }
+}
+
+//eliminar rams y mostrar discos
+
+let ramselecionada = "";
+
+function mostrardiscos(j){
+    
+    for (let i = 0; i < rams.length; i++) {
+        if (rams[i].id === j) {
+            ramselecionada = i;
+        }
+    }
+    carrito.push(rams[ramselecionada]);
+
+    const borrandoRams = document.getElementsByClassName("ramsEnStock");
+    while (borrandoRams.length > 0) borrandoRams[0].remove();
+
+    let contenedorDiscos = "";
+
+    for (const disc of alm) {
+
+        contenedorDiscos = document.createElement("div");
+    
+        contenedorDiscos.setAttribute("id", disc.id);
+        contenedorDiscos.setAttribute("onclick", "mostrarcarrito(this.id)");
+
+    
+        contenedorDiscos.innerHTML = `<h5>${disc.nombre}</h5>
+                                <p> Precio: $${disc.precio}</p>
+                                <b> Stock: ${disc.stock}</b>`;
+    
+        document.body.appendChild(contenedorDiscos);
+        contenedorDiscos.classList.add("discosEnStock");
+    }    
+}
+
+let discoselect = "";
+
+
+
