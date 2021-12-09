@@ -10,41 +10,27 @@ function mostrarcarrito(x){
 
     carrito.push(alm[discoselect]);
 
-    const borrandoDisc = document.getElementsByClassName("discosEnStock");
+    const borrandoDisc = document.getElementsByClassName("discosEnStock");  //por alguna razon no puedo pasar esto a jquery, me crashea la pestania del index.html cuando llego a esta parte
     while (borrandoDisc.length > 0) borrandoDisc[0].remove();
-
     
-    const boton = document.createElement("button");
-    document.body.appendChild(boton);
-    boton.innerText = `${carrito.length} productos, presione para borrar`;
-    boton.setAttribute("onclick", "localStorage.clear()");
-
-    let contenedorElementos = "";
+    $("body").append($(`<button id="boton">${carrito.length} productos, presione para borrar</button>`));
+    $("#boton").click(function() {localStorage.clear()});
 
     for (const elementos of carrito) {
 
-        contenedorElementos = document.createElement("div");
-        
-        // contenedorElementos.setAttribute("onclick", "agregarcarrito(this.id)");
-        
-    
-        contenedorElementos.innerHTML = `<h5>${elementos.nombre}</h5>`;
-    
-        document.body.appendChild(contenedorElementos);
-        contenedorElementos.classList.add("carrito");
 
-        document.body.getElementsByTagName("h2")[0].innerHTML = "Su carrito final es: ";
+        $("body").append($(`<div class="carrito"><h5>${elementos.nombre}</h5></div>`)); 
+        
+        // contenedorElementos.setAttribute("onclick", "agregarcarrito(this.id)");   (esto es nativo viejo que quedo y es para continuar el codigo)
+        
+        $("h2").text(`Su carrito final es: `);
 
     }
 
-    const consultar = document.createElement("div");
-    document.body.appendChild(consultar);
-    consultar.innerHTML = `<a href="contacto.html">consultar por este rig</a>`;
+    $("body").append($(`<div><a href="contacto.html">consultar por este rig</a></div>`));
     
     const guardadolocal = (clave, valor) => {localStorage.setItem(clave, valor)};
 
     guardadolocal("productoscarrito", JSON.stringify(carrito));
 
-
 }
-
