@@ -19,7 +19,7 @@ function mostrarcarrito(x){
     for (const elementos of carrito) {
 
 
-        $("body").append($(`<div class="carrito"><h5>${elementos.nombre}</h5></div>`)); 
+        $("#app").append($(`<div class="carrito"><h5>${elementos.nombre}</h5></div>`)); 
         
         // contenedorElementos.setAttribute("onclick", "agregarcarrito(this.id)");   (esto es nativo viejo que quedo y es para continuar el codigo)
         
