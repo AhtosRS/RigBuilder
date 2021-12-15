@@ -105,21 +105,17 @@ const alm = [alm1, alm2, alm3];
 let contenedorCPU = "";
 let seleccionado = "";
 let mothersSeleccionadas = [];
+let contenedorMothers = "";
 
 for (const cpu of CPUs) {
 
-    contenedorCPU = document.createElement("div");
-
-    contenedorCPU.setAttribute("id", cpu.id);
-    contenedorCPU.setAttribute("onclick", "mostrarMothers(this.id)");
-    
-
-    contenedorCPU.innerHTML = `<h5>${cpu.nombre}</h5>
+    $("#app").append($(`<div id="${cpu.id}" class="procesadoresEnStock">
+                            <h5>${cpu.nombre}</h5>
+                            <img src="Media/img${cpu.id}.png" class="imagenes-proce">
                             <p> Precio: $${cpu.precio}</p>
-                            <b> Stock: ${cpu.stock}</b>`;
+                            <b> Stock: ${cpu.stock}</b> </div>`));
 
-    document.body.appendChild(contenedorCPU);
-    contenedorCPU.classList.add("procesadoresEnStock");
+    $(`#${cpu.id}`).click(() => { $(`#${cpu.id}`).fadeOut("slow", function() {mostrarMothers(this.id)});});
     
 }
 
@@ -157,7 +153,7 @@ function mostrarMothers(x){
                                 <p> Precio: $${placasMadre.precio}</p>
                                 <b> Stock: ${placasMadre.stock}</b>`;
     
-        document.body.appendChild(contenedorMothers);
+        $("#app").append(contenedorMothers);
         contenedorMothers.classList.add("mothersEnStock");
         
     }
@@ -197,7 +193,7 @@ function mostrarRams(x) {
                                 <p> Precio: $${memorias.precio}</p>
                                 <b> Stock: ${memorias.stock}</b>`;
     
-        document.body.appendChild(contenedorRams);
+        $("#app").append(contenedorRams);
         contenedorRams.classList.add("ramsEnStock");
         
     }
@@ -233,7 +229,7 @@ function mostrardiscos(j){
                                 <p> Precio: $${disc.precio}</p>
                                 <b> Stock: ${disc.stock}</b>`;
     
-        document.body.appendChild(contenedorDiscos);
+        $("#app").append(contenedorDiscos);
         contenedorDiscos.classList.add("discosEnStock");
     }    
 }
