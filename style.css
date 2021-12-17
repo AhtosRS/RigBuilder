@@ -1,37 +1,123 @@
 * {
     font-family: 'Barlow Condensed', sans-serif;
 }
+
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-#header{
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: fit-content;
-    
+header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 170px;
+    justify-content: center;
+    align-items: center;
 }
 
-.logo {
-    display: block;
-    margin: auto;
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 700px;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    width: 100%;
+    height: 10%;
+}
+
+
+#logo {
     height: 54px;
     width: auto;
-    
+    margin-bottom: 20px;
+}
+
+.logo__img {
+    position: relative;
+    top: -30px;
+}
+
+#menu {
+    height: fit-content;
+    width: auto;
+    z-index: 2;
 }
 
 #shadeBG{
-    position: fixed;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     background: rgb(0, 0, 0, 0.6);
     width: 90%;
-    height: 70%;
+    height: 600px;
     overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+#shadeBG__body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    overflow: hidden;
+}
+
+#shadeBG__aside {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+#shadeBG__aside--rigInfo {
+    background-color: rgba(0, 0, 0, 0.699);
+    height: 95%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito-aside {
+    width: 60px;
+    height: auto;
+    margin: 15px 10px 0px 15px;
+}
+
+#shadeBG__body--header {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#shadeBG__body--app {
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: scroll;
+    padding-right: 20px;
+}
+
+#builder {
+    width: fit-content;
+    height: fit-content;
+    
+}
+
+#headerText {
+    margin-left: 5px;
 }
 
 #videoBG {
@@ -43,14 +129,15 @@ body {
 ul {
     padding: 0;
     margin: 0;
-    margin-top: 7px;
+    margin-top: 15px;
 }
 ul li {
     display: inline;
-    margin: 5px;
+    margin: 20px;
 }
 
 a {
+    display: inline-block;
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: 20px;
@@ -60,7 +147,9 @@ a {
 
 a:hover {
     text-shadow: 3px 3px 10px rgba(0, 217, 255, 0.7);
+    transform: scale(1.04);
 }
+
 
 
 h1, h2 , h3{
@@ -82,18 +171,6 @@ h5 {
     color: rgb(255, 255, 255);
 }
 
-div {
-    padding: 0;
-    margin: 5px;
-}
-
-#app {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 90%;
-}
 
 .procesadoresEnStock, .mothersEnStock, .ramsEnStock, .discosEnStock {
     background-color: rgba(0, 0, 0, 0.795);
@@ -126,7 +203,98 @@ div {
     width: auto;
 }
 
+footer {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 
+#contacto-footer {
+    height: 90%;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contacto-footerCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contacto-linea {
+    margin-top: 10px;
+}
+
+#geo-linea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#redes-footer {
+    height: 90%;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#meme-logo {
+    height: 90%;
+    width: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#meme-container {
+    width: fit-content;
+    height: fit-content;
+    margin-right: 40px;
+}
+
+#meme-img {
+    height: 150px;
+    width: auto;
+}
+
+.geo {
+    width: 20px;
+    height: auto;
+}
+
+.media {
+    display: inline;
+    width: 50px;
+    height: auto;
+    margin: 9px;
+    margin-top: 25px;
+}
+
+.media:hover {
+    transform: scale(1.04);
+}
+
+footer b, footer p {
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+}
+
+#redes-footerImg {
+    display: block;
+    
+}
 
 @media (min-aspect-ratio: 16/9) {
     #videoBG {

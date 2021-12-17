@@ -1,7 +1,3 @@
-// let entrada = parseInt(prompt("Bienvenido, desea construir un Rig? \n 1)si \n 2)no"));
-
-
-// procesadores-----------------------------------------
 
 class procesadores {
     constructor(nombre, marca, socket, chipset, precio, stock, id) {
@@ -109,7 +105,7 @@ let contenedorMothers = "";
 
 for (const cpu of CPUs) {
 
-    $("#app").append($(`<div id="${cpu.id}" class="procesadoresEnStock">
+    $("#builder").append($(`<div id="${cpu.id}" class="procesadoresEnStock">
                             <h5>${cpu.nombre}</h5>
                             <img src="Media/img${cpu.id}.png" class="imagenes-proce">
                             <p> Precio: $${cpu.precio}</p>
@@ -153,7 +149,7 @@ function mostrarMothers(x){
                                 <p> Precio: $${placasMadre.precio}</p>
                                 <b> Stock: ${placasMadre.stock}</b>`;
     
-        $("#app").append(contenedorMothers);
+        $("#builder").append(contenedorMothers);
         contenedorMothers.classList.add("mothersEnStock");
         
     }
@@ -193,7 +189,7 @@ function mostrarRams(x) {
                                 <p> Precio: $${memorias.precio}</p>
                                 <b> Stock: ${memorias.stock}</b>`;
     
-        $("#app").append(contenedorRams);
+        $("#builder").append(contenedorRams);
         contenedorRams.classList.add("ramsEnStock");
         
     }
@@ -229,7 +225,7 @@ function mostrardiscos(j){
                                 <p> Precio: $${disc.precio}</p>
                                 <b> Stock: ${disc.stock}</b>`;
     
-        $("#app").append(contenedorDiscos);
+        $("#builder").append(contenedorDiscos);
         contenedorDiscos.classList.add("discosEnStock");
     }    
 }
