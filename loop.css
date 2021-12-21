@@ -1,0 +1,68 @@
+#loop__body {
+    height: 20px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.479);
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+#loop__body::before, #loop__body::after{
+    content: ' ';
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    
+    z-index: 2;
+}
+
+#loop__body::before {
+    top: 0;
+    left: 0;
+}
+
+#loop__body::after{
+    top: 0;
+    right: 0;
+    transform: rotateZ(180deg);
+}
+
+#loop__body #loop__body--track {
+    display: flex;
+    width: calc(250px *2);
+    animation: scroll 50s infinite linear;
+}
+
+.criptos {
+    color: white;
+    margin: 0 50px 0 50px;
+}
+
+
+
+@keyframes scroll{
+    0% {
+        transform: translateX(-2000px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    @keyframes scroll{
+        0% {
+            transform: translateX(-3000px);
+        }
+    
+        100% {
+            transform: translateX(1000px);
+        }
+    }
+}
+
+
+      
+
+

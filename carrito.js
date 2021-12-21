@@ -10,24 +10,27 @@ function mostrarcarrito(x){
 
     carrito.push(alm[discoselect]);
 
-    const borrandoDisc = document.getElementsByClassName("discosEnStock");  //por alguna razon no puedo pasar esto a jquery, me crashea la pestania del index.html cuando llego a esta parte
+    const borrandoDisc = document.getElementsByClassName("discosEnStock"); 
     while (borrandoDisc.length > 0) borrandoDisc[0].remove();
     
-    $("body").append($(`<button id="boton">${carrito.length} productos, presione para borrar</button>`));
+    $("#shadeBG__aside--rigInfo").append($(`<button id="boton">${carrito.length} productos, presione para borrar</button>`));
     $("#boton").click(function() {localStorage.clear()});
 
     for (const elementos of carrito) {
 
 
-        $("#app").append($(`<div class="carrito"><h5>${elementos.nombre}</h5></div>`)); 
+        $("#builder").append($(`<div class="ramsEnStock"><h5>${elementos.nombre}</h5>
+                                <img src="Media/img${elementos.id}.png" class="imagenes-proce">
+                                <p> Precio: $${elementos.precio}</p>
+                                <b> Stock: ${elementos.stock}</b></div>`)); 
         
         // contenedorElementos.setAttribute("onclick", "agregarcarrito(this.id)");   (esto es nativo viejo que quedo y es para continuar el codigo)
         
-        $("h2").text(`Su carrito final es: `);
+        $("#headerText").text(`Su carrito final es: `);
 
     }
 
-    $("body").append($(`<div><a href="contacto.html">consultar por este rig</a></div>`));
+    $("#shadeBG__body--app").append($(`<div id="boton-contacto"><a href="contacto.html">consultar por este rig</a></div>`));
     
     const guardadolocal = (clave, valor) => {localStorage.setItem(clave, valor)};
 
