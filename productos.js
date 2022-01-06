@@ -1,3 +1,29 @@
+// PLACAS GRAFICAS -------------------------------
+
+class GPU{
+    constructor(nombre, mhs, precio, stock, id, consumo, pcie) {
+        this.nombre = nombre;
+        this.mhs = parseInt(mhs);
+        this.precio = parseInt(precio);
+        this.stock = parseInt(stock);
+        this.id = id;
+        this.consumo = parseInt(consumo);
+        this.pcie = parseInt(pcie);
+    }
+}
+
+const gpu1 = new GPU("RTX 3080ti EVGA FTW", 85, 435000, 7, "g1", 280, 3);
+const gpu2 = new GPU("RTX 3080ti MSI Ventus", 85, 442000, 6, "g2", 280, 2);
+const gpu3 = new GPU("GTX 1660ti Gigabyte", 31, 125000, 15, "g3", 70, 1);
+const gpu4 = new GPU("AMD 6600xt Sapphire", 32, 150000, 20, "g4", 60, 1);
+const gpu5 = new GPU("RTX 2060 EVGA KO", 31, 140000, 25, "g5", 120, 1);
+const gpu6 = new GPU("AMD 6700xt Asrock", 48, 220000, 20, "g6", 140, 2);
+const gpu7 = new GPU("RTX 3080 LHR MSI Ventus", 70, 327000, 9, "g7", 240, 2);
+
+const GPUs = [gpu1, gpu2, gpu3, gpu4, gpu5, gpu6, gpu7];
+
+// PROCESADORES ---------------------------------
+
 class procesadores {
     constructor(nombre, marca, socket, chipset, precio, stock, id) {
         this.nombre = nombre;
@@ -49,7 +75,7 @@ class motherboards {
 }
 
 const mother1 = new motherboards("Gigabyte H410m s1200", 1200, 400, 2, 4, 9999, 4, "m1");
-const mother2 = new motherboards("Asus Prime z590-A s1200", 1200, 500, 4, 5, 32500, 3, "m2");
+const mother2 = new motherboards("Asus Prime z590-A s1200", 1200, 888, 4, 5, 32500, 3, "m2");
 const mother3 = new motherboards("Asus Prime H310m-R", 1151, 300, 2, 2, 8300, 4, "m3");
 const mother4 = new motherboards("Asrock A320m-hdv", "AM4", 300, 2, 2, 9000, 2, "m4");
 const mother5 = new motherboards("Asrock B450-hdv", "AM4", 999, 2, 2, 9000, 2, "m5");   //chipset 999 es que es compatible con chipset 300 400 y 500

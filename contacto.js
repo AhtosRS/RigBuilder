@@ -20,7 +20,7 @@ if (productosguardados.length > 0) {
 
         $("#builder").append($(`<div class="ramsEnStock">
                             <h5>${pros.nombre}</h5>
-                            <img src="Media/img${pros.id}.png" class="imagenes-proce">
+                            <img src="Media/img${pros.id}.png" class="imagenes-proce" id="especial${pros.id}">
                             <p> Precio: $${pros.precio}</p>
                             <b> Stock: ${pros.stock}</b> </div>`));
         }

@@ -9,6 +9,7 @@ function mostrarcarrito(x){
     }
 
     carrito.push(alm[discoselect]);
+    pushAsideSSD(alm[discoselect].nombre);
 
     const borrandoDisc = document.getElementsByClassName("discosEnStock"); 
     while (borrandoDisc.length > 0) borrandoDisc[0].remove();
@@ -20,7 +21,7 @@ function mostrarcarrito(x){
 
 
         $("#builder").append($(`<div class="ramsEnStock"><h5>${elementos.nombre}</h5>
-                                <img src="Media/img${elementos.id}.png" class="imagenes-proce">
+                                <img src="Media/img${elementos.id}.png" class="imagenes-proce" id="especial${elementos.id}">
                                 <p> Precio: $${elementos.precio}</p>
                                 <b> Stock: ${elementos.stock}</b></div>`)); 
         
