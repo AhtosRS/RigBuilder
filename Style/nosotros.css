@@ -1,0 +1,17 @@
+main {
+    height: 100%;
+}
+#contenedor-nos{
+    text-align: center;
+}
+
+
+#banner1{
+    width: 60%;
+    margin-top: 30px;
+}
+#banner2{
+    width: 40%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
